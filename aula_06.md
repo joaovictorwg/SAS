@@ -86,3 +86,19 @@ A elevação de privilégios pode ser obtida através de:
 
 ---
 
+ls -lah
+
+r ou 4 (permissão de leitura)
+w ou 2 (permissão de escrita)
+x ou 1 (permissão de execução)
+
+Arquivos com permissão SUID
+permissçoes especiais para arquivos em SOs com kernel linux (sempre que tiverem essa flag e forem executados, serão executados como root)
+
+comando para pesquisar arquivos com flag suid
+find / -perm -u=s 2>/dev/null
+
+identificamos que o que o arquivo /etc/passwd possui a flag
+então vamos executar o arquivo find nele, pois o arquivo find, ao encontrar um arquivo que existe, permite que execute-mos um comando ao encontrar, então podemos executar o seguite comando para entrar no user root
+
+find /etc/passwd -exec "/bin/sh" -p \; (onde "/bin/sh" é o exec)
